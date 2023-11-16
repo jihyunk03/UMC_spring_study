@@ -2,11 +2,11 @@ package umc.domain;
 
 import lombok.*;
 import umc.domain.common.BaseEntity;
+import umc.domain.mapping.MemberAgree;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,4 +22,7 @@ public class Terms extends BaseEntity {
     private String title;
 
     private String content;
+
+    @OneToMany(mappedBy = "terms", cascade = CascadeType.ALL)
+    private List<MemberAgree> memberAgreeList = new ArrayList<>();
 }

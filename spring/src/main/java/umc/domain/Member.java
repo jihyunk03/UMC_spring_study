@@ -4,9 +4,14 @@ import lombok.*;
 import umc.domain.common.BaseEntity;
 import umc.domain.enums.Gender;
 import umc.domain.enums.MemberStatus;
+import umc.domain.mapping.MemberAgree;
+import umc.domain.mapping.MemberMission;
+import umc.domain.mapping.MemberPrefer;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -40,4 +45,16 @@ public class Member extends BaseEntity {
     private MemberStatus status;
 
     private LocalDate inactiveDate;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<MemberAgree> memberAgreeList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<MemberPrefer> memberPreferList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Review> reviewList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<MemberMission> memberMissionList = new ArrayList<>();
 }
