@@ -20,6 +20,7 @@ public class MemberAgree extends BaseEntity {
     private Long id;
 
     @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "VARCHAR(10)")
     private AgreeStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)

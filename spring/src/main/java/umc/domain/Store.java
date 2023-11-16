@@ -18,8 +18,10 @@ public class Store extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 15)
     private String name;
 
+    @Column(nullable = false, length = 30)
     private String address;
 
     private Float score;
